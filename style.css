@@ -1,0 +1,329 @@
+/*
+Theme Name:     GossipMonk
+Description:    
+Author:         Gautam Gupta
+Template:       Divi
+
+(optional values you can add: Theme URI, Author URI, Version)
+*/
+
+@import url("../Divi/style.css");
+
+/* Header, footer color scheme and logo fix */
+
+.et_fixed_nav #logo {
+	max-height: 80px;
+	margin-top: -18px;
+}
+
+.et-fixed-header #logo {
+	max-height: 51px;
+	margin-top: -9px;
+}
+
+#footer-bottom {
+	background-color: inherit !important;
+}
+
+#footer-info, .et-social-icon a, #footer-info a, .mobile_menu_bar:before {
+	color: #fff !important;
+}
+
+.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before, blockquote {
+	border-color: #fff !important;
+}
+
+body.et_fixed_nav.et_secondary_nav_enabled #main-header {
+	top: 33px;
+}
+
+#et-top-navigation .et-social-icons {
+	float: right;
+	display: block;
+	padding-top: 10px;
+}
+
+.et-fixed-header #et-top-navigation .et-social-icons {
+	padding-top: 5px;
+}
+
+#et-top-navigation .et-social-icon a:hover {
+	color: #2EA3F2 !important;
+}
+
+.single-post #content-area .et_pb_post {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+/* Infinite scroll */
+
+#infscr-loading {
+	position: absolute;
+	bottom: 20px;
+}
+
+/* Mailchimp subscribe in sidebar */
+
+.et-sidebar-subscribe {
+	width: 270px;
+	margin: 0 auto;
+	display: block;
+}
+
+.et-sidebar-subscribe .et_pb_newsletter_description {
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 230px !important;
+}
+
+.et-sidebar-subscribe .et_pb_newsletter_form {
+	width: 230px !important;
+	margin: 0 auto;
+	padding-left: 20px !important;
+}
+
+.et-sidebar-subscribe .et_pb_newsletter_button {
+	color: inherit !important;
+}
+
+/* All links should be black on single post page */
+
+.single-post .entry-content a {
+	color: #333;
+}
+.single-post .entry-content a.link-color {
+	color: #2EA3F2;
+}
+
+/* Fix heading height */
+.entry-content h2 {
+	line-height: 1.2em;
+}
+
+/* Center align video on post page */
+.wp-video {
+	margin: 0 auto;
+}
+
+/* Play button for video posts */
+
+.et_pb_image_container a {
+	display: block;
+}
+
+.playbutton {
+    background: url('images/playbutton.png') center center no-repeat;
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    width: 101px;
+    height: 74px;
+    margin: -50px 0 0 -50px;
+    z-index: 10;
+    opacity: 0.6; 
+    display: none; /* Displayed on full document load (imagesLoaded) */
+}
+.et_pb_image_container:hover .playbutton { 
+    opacity: 1.0;
+}
+
+/* Fix author fn styling in post listing */
+
+.post-meta span.fn {
+	color: inherit;
+	font-weight: inherit;
+	text-decoration: inherit;
+	font-size: inherit;
+	display: inherit;
+}
+
+/* Facebook below post spacing */
+
+.fb-comments-heading {
+	margin-bottom: 10px;
+}
+
+.et-single-post-ad {
+	margin-top: 20px;
+}
+
+/* Change layout width */
+
+#left-area .post-meta {
+	padding-bottom: 10px;
+	margin-bottom: 0;
+}
+
+.et_pb_blog_grid .et_pb_post {
+	margin: 0 30px 30px 0;
+}
+
+#top-menu {
+	display: none;
+}
+#et_mobile_nav_menu {
+	display: block;
+	margin-top: 8px;
+}
+
+@media only screen and ( min-width: 768px ) {
+	.et_mobile_menu {
+		padding: 1%;
+		width: 98%;
+	}
+	#main-header {
+		padding-bottom: 0;
+	}
+}
+@media only screen and ( max-width: 767px ) {
+	.et_mobile_menu {
+		top: 124px;
+	}
+	.et_pb_blog_grid .et_pb_post {
+		margin-bottom: 30px;
+	}
+}
+
+@media only screen and ( min-width: 1101px ) {
+	.et_right_sidebar #left-area { width: 719px; }
+	.et_right_sidebar #sidebar { width: 300px; }
+	.et_right_sidebar #main-content .container:before { right: 300px; }
+	.et_pb_blog_grid .et_pb_post { width: 299px; }
+}
+
+@media only screen and ( min-width: 981px ) and ( max-width: 1100px ) {
+	.et_right_sidebar #left-area, .et_left_sidebar #left-area { width: 629px; margin-right: 30px; }
+	.et_right_sidebar #sidebar, .et_left_sidebar #sidebar { width: 270px; padding-left: 10px; }
+	.et_right_sidebar #main-content .container:before {
+right: 330px; }
+}
+
+@media only screen and ( min-width: 768px ) {
+	body.single-post #left-area { width: 728px; }
+}
+
+@media only screen and ( min-width: 768px ) and (max-width: 980px) {
+	body.single-post .container { width: 728px; }
+}
+
+@media only screen and ( max-width: 479px ) {
+	body.single #content-area { margin-top: 40px; }
+	.et_pb_row, .container, .et_pb_container { width: 300px; }
+	ins.adsbygoogle { width: 300px; height: 250px; }
+}
+
+/* Single column layout on single post */
+
+body.single-post #main-content .container:before {
+	width: 0;
+}
+
+body.single-post #main-content #left-area {
+	float: none;
+	margin: 0 auto;
+}
+
+body.single-post .et-single-post-ad {
+	margin: 15px auto;
+	display: block !important;
+}
+
+body.single-post #left-area .post-meta {
+	padding: 0;
+	margin: 0;
+}
+
+/* Ad layouts with responsive code */
+
+.et-single-post-ad-mid {
+	max-width: 338px;
+}
+
+/* Facebook like box special centre-align for non-computer layouts */
+
+.fb-like-box {
+	max-width: 289px;
+	margin: 0 auto;
+	display: block !important;
+}
+
+/*
+Adblock Notice
+http://codepen.io/anon/pen/ogYLWE
+*/
+.aye-haye-adblock {
+  font-smoothing: antialiased;
+  width: 100%;
+  background: #5050df;
+  box-sizing: border-box;
+  padding: 0.1% 4% 1%;
+  outline-offset: -5px;
+  outline: thick solid rgba(255, 255, 255, 0);
+  transition: 0.2s;
+  display: block;
+  text-decoration: none;
+  text-align: left;
+}
+.aye-haye-adblock * {
+  transition: 0.2s;
+}
+.aye-haye-adblock .savaal, .aye-haye-adblock .bheekh, .aye-haye-adblock .daya-karo {
+  color: white;
+}
+.aye-haye-adblock .savaal {
+  text-transform: uppercase;
+  font-size: 90%;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);
+  padding-bottom: 20px;
+  font-weight: normal;
+}
+.aye-haye-adblock .savaal:after {
+  display: block;
+  content: "";
+  width: 60px;
+  margin-top: 15px;
+  border-bottom: 2px solid white;
+}
+.aye-haye-adblock .bheekh {
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 10px 0 35px 0;
+  font-size: 170%;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.aye-haye-adblock .daya-karo {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 90%;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.aye-haye-adblock .daya-karo .wut {
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  font-style: normal;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px 10px;
+  font-size: 80%;
+  font-weight: 700;
+  margin-left: 5px;
+}
+.aye-haye-adblock .daya-karo .wut:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Navigation margin */
+.wp-pagenavi a, .wp-pagenavi span {
+	margin: 0 10px;
+}
+
+/* Remove padding from top row on home page */
+body.home .et_pb_row {
+	padding-top: 0;
+}
+
+/* Back to top button */
+.et_pb_scroll_top {
+	bottom: 75px;
+}
