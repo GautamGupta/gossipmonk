@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
         $(window).scroll(function() {
             if ($(window).width() <= 980 || $('#content-area').outerHeight() <= $('#sidebar').outerHeight()) {
                 // Restore sidebar if it was fixed on small screen
-            restore_sidebar();
+                restore_sidebar();
             } else {
                 var pos       = parseInt($(window).scrollTop()),
                     winheight = parseInt($(window).height()),
@@ -117,7 +117,7 @@ jQuery(document).ready(function($) {
 
             this.options.loading.finished = function() {
                 instance._numScrolls++;
-            __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'scroll', 'eventAction': 'Infinite Scroll Fired', 'eventLabel': 'Page', 'eventValue': instance._numScrolls, 'nonInteraction': 1});
+                __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'scroll', 'eventAction': 'Infinite Scroll Fired', 'eventLabel': 'Page', 'eventValue': instance._numScrolls, 'nonInteraction': 1});
             }
             return false;
         }

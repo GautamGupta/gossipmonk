@@ -47,16 +47,16 @@ function et_get_first_video() {
 		$first_oembed = $custom_field[0];
 
 		$video_width  = (int) apply_filters( 'et_blog_video_width', 1080 );
-		$video_height = (int) apply_filters( 'et_blog_video_height', 630 );
+		// $video_height = (int) apply_filters( 'et_blog_video_height', 630 );
 
 		$first_oembed = preg_replace( '/<embed /', '<embed wmode="transparent" ', $first_oembed );
 		$first_oembed = preg_replace( '/<\/object>/','<param name="wmode" value="transparent" /></object>', $first_oembed );
 
 		$first_oembed = preg_replace( "/width=\"[0-9]*\"/", "width={$video_width}", $first_oembed );
-		$first_oembed = preg_replace( "/height=\"[0-9]*\"/", "height={$video_height}", $first_oembed );
+		// $first_oembed = preg_replace( "/height=\"[0-9]*\"/", "height={$video_height}", $first_oembed );
 
 		// Autoplay
-		$first_oembed = preg_replace('@embed/([^"&]*)@', 'embed/$1&showinfo=0&autoplay=1&autohide=1& iv_load_policy=3&modestbranding=1&theme=light', $first_oembed);
+		$first_oembed = preg_replace('@embed/([^"&]*)@', 'embed/$1&showinfo=0&autoplay=1&autohide=1&iv_load_policy=3&modestbranding=1&theme=light', $first_oembed);
 
 		break;
 	}
@@ -425,7 +425,7 @@ function gm_et_pb_blog( $atts ) {
 				} else {
 					if ( has_excerpt() ) {
 						the_excerpt();
-					} else { 
+					} else {
 						truncate_post( 270 );
 					}
 					$more = 'on' == $show_more ? sprintf( ' <a href="%1$s" class="more-link" >%2$s</a>' , esc_url( get_permalink() ), __( 'read more', 'Divi' ) )  : '';
