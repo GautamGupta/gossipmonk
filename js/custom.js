@@ -1,12 +1,15 @@
+// Yoast uses __gaTracker for some reason, while general GA code uses ga
+ga = __gaTracker;
+
 jQuery(document).ready(function($) {
     /* Adblock Notice http://www.labnol.org/internet/alternate-content-for-adblock/28602/ */
     var ad = $("ins.adsbygoogle");
     if (ad && ad.html().replace(/\s/g, "").length == 0) {
         ad.attr('style', 'display: block !important;');
         ad.html('<a class="aye-haye-adblock" rel="nofollow" href="http://gossipmonk.com/whitelist-gossipmonk-adblock/"> <h2 class="savaal">Using AdBlock?</h2> <h1 class="bheekh">Online Ads Help Pay Our Bills</h1> <h2 class="daya-karo">Please whitelist *.gossipmonk<wbr>.com.<span class="wut">?</span></h2></div>');
-/*  __gaTracker('send', 'event', 'adblock', 'blocked', 'true');
+        /* ga('send', 'event', 'adblock', 'blocked', 'true');
     } else {
-    __gaTracker('send', 'event', 'adblock', 'unblocked', 'false'); */
+        ga('send', 'event', 'adblock', 'unblocked', 'false'); */
     }
 
     /* Fixed sidebar */
@@ -104,9 +107,9 @@ jQuery(document).ready(function($) {
                 $('.infscr-loading').hide();
                 $('.infscr-loading img').hide();
             });
-            
+
             // Log infinite scroll events in GA
-            __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'Scroll Depth', 'eventAction': 'Infinite Scroll', 'eventLabel': 'Page', 'eventValue': opts.state.currPage, 'nonInteraction': 1});
+            ga('send', { 'hitType': 'event', 'eventCategory': 'Scroll Depth', 'eventAction': 'Infinite Scroll', 'eventLabel': 'Page', 'eventValue': opts.state.currPage, 'nonInteraction': 1});
         }
     );
 
