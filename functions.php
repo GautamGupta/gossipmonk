@@ -270,6 +270,15 @@ function gm_monarch_inline_bottom_heading( $content = '' ) {
 }
 // add_filter( 'the_content', 'gm_monarch_inline_bottom_heading', -1 );
 
+/* Remove stickies from front page */
+function gm_modify_front_main_query( $query ) {
+	if ( $query->is_home() && $query->is_main_query() ) { // Run only on the homepage
+		$query->set( 'ignore_sticky_posts', true );
+	}
+}
+// Hook my above function to the pre_get_posts action
+add_action( 'pre_get_posts', 'gm_modify_front_main_query' );
+
 /* Modified et_pb_blog for our needs, used everywhere */
 function gm_et_pb_blog( $atts ) {
 	extract( shortcode_atts( array(
@@ -288,6 +297,7 @@ function gm_et_pb_blog( $atts ) {
 			'show_pagination' => 'on',
 			'background_layout' => 'light',
 			'show_more' => 'off',
+			'ignore_sticky_posts' => false,
 		), $atts
 	) );
 
@@ -299,7 +309,7 @@ function gm_et_pb_blog( $atts ) {
 		wp_enqueue_script( 'jquery-masonry-3' );
 	}
 
-	$args = array( 'posts_per_page' => (int) $posts_number );
+	$args = array( 'posts_per_page' => (int) $posts_number, 'ignore_sticky_posts' => (bool) $ignore_sticky_posts );
 
 	$et_paged = is_front_page() ? get_query_var( 'page' ) : get_query_var( 'paged' );
 
