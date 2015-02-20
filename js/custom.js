@@ -123,6 +123,11 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Logging amount scrolled
+    $.scrollDepth({
+        elements: ['body.single .et_pb_blog_grid_wrapper'],
+    });
+
     if ($(window).width() <= 980) {
         // Pause Infinite Scroll on small screen
         $container.infinitescroll('pause');

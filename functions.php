@@ -209,7 +209,8 @@ function gm_previous_posts_link( $label = null ) {
 
 function gossipmonk_scripts() {
 	wp_enqueue_script( 'infinitescroll', get_stylesheet_directory_uri() . '/js/jquery.infinitescroll.min.js', array( 'jquery' ), '1.5.100504', true );
-	wp_enqueue_script( 'gossipmonk', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery', 'imagesloaded', 'jquery-masonry-3', 'infinitescroll' ), '0.1', true );
+	wp_enqueue_script( 'scrolldepth', get_stylesheet_directory_uri() . '/js/jquery.scrolldepth.min.js', array( 'jquery' ), '0.7.1', true );
+	wp_enqueue_script( 'gossipmonk', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery', 'imagesloaded', 'jquery-masonry-3', 'infinitescroll', 'scrolldepth' ), '0.1', true );
 }
 add_action( 'wp_enqueue_scripts', 'gossipmonk_scripts' );
 
