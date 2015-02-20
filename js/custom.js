@@ -10,9 +10,10 @@ jQuery(document).ready(function($) {
     }
 
     /* Fixed sidebar */
-    var $sidebar = $('#sidebar');
+    var $sidebar = $('#sidebar-inside');
     if ($sidebar.length > 0) {
     var $footer  = $('body.single .et_pb_blog_grid_wrapper').length > 0 ? $('body.single .et_pb_blog_grid_wrapper') : $('#main-footer');
+    var ad_height = $('#sidebar-ad').length > 0 ? $sidebar.offset().top : 0;
 
     function restore_sidebar() {
 	$sidebar.css({
@@ -29,25 +30,26 @@ jQuery(document).ready(function($) {
     });
 
     $(window).scroll(function() {
-        if ($(window).width() <= 980 || $('#content-area').outerHeight() <= $sidebar.outerHeight()) {
+        if ($(window).width() <= 980 || $('#content-area').outerHeight() <= $('#sidebar').outerHeight()) {
             // Restore sidebar if it was fixed on small screen
 	    restore_sidebar();
         } else {
             var pos       = parseInt($(window).scrollTop()),
                 winheight = parseInt($(window).height()),
-                height    = parseInt($sidebar.outerHeight()),
-                origpos   = parseInt($("#content-area").offset().top),
+                margin    = parseInt($('.et_pb_widget').css('marginBottom')),
+                height    = parseInt($sidebar.outerHeight()) + margin,
+		origpos   = parseInt($('#sidebar-ad').length > 0 ? $('#sidebar-ad').offset().top + $('#sidebar-ad').outerHeight() : $("#content-area").offset().top),
                 footTop   = parseInt($footer.offset().top),
 		posleft   = parseInt($sidebar.offset().left);
 
-            if (pos > (height + origpos) - winheight) {
+            if (pos > (height + margin + origpos) - winheight) {
                 $sidebar.css({
                     'position': 'fixed',
                     'left': posleft
                 });
 
                 if (pos + winheight >= footTop)
-                    $sidebar.css({'top': 'auto', 'bottom' : winheight - (footTop - pos)});
+                    $sidebar.css({'top': 'auto', 'bottom' : winheight - (footTop - pos) + margin});
                 else
                     $sidebar.css({'top' : (winheight - height), 'bottom': 'auto'});
             } else {
@@ -79,7 +81,7 @@ jQuery(document).ready(function($) {
                 nextSelector : ".et_pb_blog_grid_wrapper .pagination .alignleft a",
                 // selector for all items you'll retrieve
                 itemSelector : ".et_pb_blog_grid_wrapper article.post",
-		bufferPx: 320,
+		bufferPx: 640,
                 loading : {
                     msgText : "<em style='padding-left:5px;'>Loading...</em>",
                     finishedMsg : "<em>That's all we've for now!</em>"
@@ -106,6 +108,22 @@ jQuery(document).ready(function($) {
 		});
             }
         );
+
+	// http://plasticmind.com/javascript/infinite-scrolling-behavior/
+	$.extend($.infinitescroll.prototype,{
+    _setup_simplyrecipes: function infscr_setup_simplyrecipes () {
+        var instance = this;
+
+        this._binding('bind');
+        this._numScrolls = 1; // Register a scroll counter
+
+        this.options.loading.finished = function() {
+            instance._numScrolls++;
+	    __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'scroll', 'eventAction': 'Infinite Scroll Fired', 'eventLabel': 'Page', 'eventValue': instance._numScrolls, 'nonInteraction': 1});
+        }
+        return false;
+    }
+    });
 
     if ($(window).width() <= 980) {
 	// Pause Infinite Scroll on small screen
