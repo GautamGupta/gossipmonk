@@ -109,7 +109,7 @@ jQuery(document).ready(function($) {
             });
 
             // Log infinite scroll events in GA
-            ga('send', { 'hitType': 'event', 'eventCategory': 'Scroll Depth', 'eventAction': 'Infinite Scroll', 'eventLabel': 'Page', 'eventValue': opts.state.currPage, 'nonInteraction': 1});
+            ga('send', { 'hitType': 'event', 'eventCategory': 'Scroll Depth', 'eventAction': 'Infinite Scroll', 'eventLabel': 'Page ' + opts.state.currPage, 'nonInteraction': 1});
         }
     );
 
