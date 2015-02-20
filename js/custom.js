@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
         },
 
         // Trigger Masonry as a callback
-        function( newElements ) {
+        function( newElements, opts ) {
             $('.infscr-loading').show();
             $('.infscr-loading img').show();
             // hide new items while they are loading
@@ -104,24 +104,11 @@ jQuery(document).ready(function($) {
                 $('.infscr-loading').hide();
                 $('.infscr-loading img').hide();
             });
+            
+            // Log infinite scroll events in GA
+            __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'Scroll Depth', 'eventAction': 'Infinite Scroll', 'eventLabel': 'Page', 'eventValue': opts.state.currPage, 'nonInteraction': 1});
         }
     );
-
-    // http://plasticmind.com/javascript/infinite-scrolling-behavior/
-    $.extend($.infinitescroll.prototype, {
-        _setup_simplyrecipes: function infscr_setup_simplyrecipes () {
-            var instance = this;
-
-            this._binding('bind');
-            this._numScrolls = 1; // Register a scroll counter
-
-            this.options.loading.finished = function() {
-                instance._numScrolls++;
-                __gaTracker('send', { 'hitType': 'event', 'eventCategory': 'scroll', 'eventAction': 'Infinite Scroll Fired', 'eventLabel': 'Page', 'eventValue': instance._numScrolls, 'nonInteraction': 1});
-            }
-            return false;
-        }
-    });
 
     // Logging amount scrolled
     $.scrollDepth({
